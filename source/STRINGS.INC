@@ -8,7 +8,7 @@
 
 ; program stringtable
 ; ---------------------------------------------------------------------------
-  sProgram           DB   'PC SPEAKER DRIVER  VER. 1.1 REV. C',0
+  sProgram           DB   'PC SPEAKER DRIVER  VER. 1.1 REV. D',0
   sCopyright         DB   'Copyright (C) 1998-2021 Microprogramming TECHNIQUES',0
   sAuthor            DB   'Programming/PC Code: Alexandru Groza',0
   sRights            DB   'All rights reserved.',0

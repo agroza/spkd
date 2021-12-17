@@ -18,6 +18,13 @@
 ; ---------------------------------------------------------------------------
 programMainLoop proc near
 
+  LCursorPosition  EQU  word ptr [bp - 02h]
+
+  push bp
+  mov bp,sp
+
+  sub sp,02h
+
   mov byte ptr [GHighForeground],clGreen
 
   call videoWriteNewln
@@ -29,12 +36,12 @@ programMainLoop proc near
   call videoWrite
 
   call videoGetCursor
-  mov word ptr [GCursorPosition],dx
+  mov LCursorPosition,dx
 
   jmp @@doLoop
 
 @@executeCommand:
-  mov dx,word ptr [GCursorPosition]
+  mov dx,LCursorPosition
   call videoMoveCursor
 
   call videoWrite
@@ -48,7 +55,7 @@ programMainLoop proc near
 
   call videoGetNormalAttribute
   mov al,kInputPromptClearChar
-  mov dx,word ptr [GCursorPosition]
+  mov dx,LCursorPosition
   inc dh
   inc dl
   mov ch,kInputPromptHeight
@@ -132,11 +139,14 @@ programMainLoop proc near
   jmp @@executeCommand
 
 @@endLoop:
-  mov dx,word ptr [GCursorPosition]
+  mov dx,LCursorPosition
   call videoMoveCursor
 
   lea si,sExit
   call videoWriteln
+
+  mov sp,bp
+  pop bp
 
   ret
 

@@ -12,7 +12,5 @@
 
 ; general program variables
 ; ---------------------------------------------------------------------------
-  GCursorPosition        DW   ?
   GIOAddress             DW   ?
   GCommand               DB   ?
-  
