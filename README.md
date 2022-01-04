@@ -2,7 +2,7 @@
 PC Speaker Driver Program
 
 ## Synopsis
-This repository contains the MS-DOS driver source code for my DIY [ISA PC Speaker Driver](http://www.alexandrugroza.ro/microelectronics/system-design/isa-pc-speaker-driver/index.html) card that you cand find on the [Microelectronics](http://www.alexandrugroza.ro/microelectronics/index.html) page on my site.
+This repository contains the MS-DOS driver source code for my DIY [ISA PC Speaker Driver](http://www.alexandrugroza.ro/microelectronics/system-design/isa-pc-speaker-driver/index.html) card that you can find on the [Microelectronics](http://www.alexandrugroza.ro/microelectronics/index.html) page on my site.
 
 The program allows the control of the output relay, switches between amplified and non-amplified PC Speaker modes, and ajdusts the digital volume control in amplified PC Speaker mode.
 
