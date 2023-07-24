@@ -8,7 +8,7 @@
 
 ; program stringtable
 ; ---------------------------------------------------------------------------
-  sProgram           DB   'PC SPEAKER DRIVER  VER. 1.1 REV. D',0
+  sProgram           DB   'PC SPEAKER DRIVER  VER. 1.2 REV. A',0
   sCopyright         DB   'Copyright (C) 1998-2021 Microprogramming TECHNIQUES',0
   sAuthor            DB   'Programming/PC Code: Alexandru Groza',0
   sRights            DB   'All rights reserved.',0
@@ -38,8 +38,8 @@
                           '[',3,kACCEL_CMD_MODE,4,'] Mode (on/off)',1,2,\
                           '[',3,kACCEL_CMD_OTP_ON,4,'] Output On ',\
                           '[',3,kACCEL_CMD_OTP_OFF,4,'] Output Off ',\
-                          '[',3,kACCEL_CMD_MODE_ON,4,'] Mode On ',\
-                          '[',3,kACCEL_CMD_MODE_OFF,4,'] Mode Off',0
+                          '[',3,kACCEL_CMD_MODE_ON,4,'] Amplifier ',\
+                          '[',3,kACCEL_CMD_MODE_OFF,4,'] PC Speaker',0
   sInputPrompt       DB   '> ',0
 
   sExit              DB   'Exit',0

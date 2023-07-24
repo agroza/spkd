@@ -32,15 +32,17 @@ include program.inc
 ; ---------------------------------------------------------------------------
 writeProgramHeader proc near
 
-  call videoWriteNewln
-
-  mov byte ptr [GBackground],clBlack
-
   mov byte ptr [GForeground],clWhite
+
+  call videoWriteNewln
   lea si,sProgram
   call videoWriteln
 
   mov byte ptr [GForeground],clLightGray
+
+  test byte ptr [GCmdLineParams],kCMD_LINE_QUIET
+  jnz @@exit
+
   lea si,sCopyright
   call videoWriteln
   lea si,sAuthor
@@ -48,6 +50,7 @@ writeProgramHeader proc near
   lea si,sRights
   call videoWriteln
 
+@@exit:
   ret
 
 writeProgramHeader endp
@@ -80,9 +83,13 @@ writeHelp endp
 ; ---------------------------------------------------------------------------
 writeParameterError proc near
 
+  mov byte ptr [GForeground],clLightRed
+
   call videoWriteNewln
   lea si,sParameterMissing
   call videoWriteln
+
+  mov byte ptr [GForeground],clLightGray
 
   ret
 
@@ -156,9 +163,12 @@ processParameters endp
 ; Main program entrypoint.
 ; ---------------------------------------------------------------------------
 @start:
-  call writeProgramHeader
+  mov byte ptr [GBackground],clBlack
+
   call processParameters
   jz @exit
+
+  call writeProgramHeader
 
   test byte ptr [GCmdLineParams],kCMD_LINE_HELP
   jnz @showHelp

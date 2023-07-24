@@ -54,7 +54,7 @@ programMainLoop proc near
   call emitSound
 
   call videoGetNormalAttribute
-  mov al,kInputPromptClearChar
+  mov al,kInputPromptClearMask
   mov dx,LCursorPosition
   inc dh
   inc dl
@@ -66,7 +66,7 @@ programMainLoop proc near
   xor ah,ah
   int 16h
 
-  cmp al,27
+  cmp al,kACCEL_CMD_EXIT
   jz @@endLoop
   cmp al,kACCEL_CMD_DOWN
   jz @@doVolumeDown
@@ -89,6 +89,18 @@ programMainLoop proc near
   jz @@doModeOff
 
   jmp @@doLoop
+
+@@doVolumeDown:
+  lea si,sVolumeDown
+  mov bl,kHAL_CMD_DOWN
+
+  jmp @@executeCommand
+
+@@doVolumeUp:
+  lea si,sVolumeUp
+  mov bl,kHAL_CMD_UP
+
+  jmp @@executeCommand
 
 @@doOutput:
   lea si,sOutputFlipped
@@ -123,18 +135,6 @@ programMainLoop proc near
 @@doModeOff:
   lea si,sModeOff
   mov bl,kHAL_CMD_MODE_OFF
-
-  jmp @@executeCommand
-
-@@doVolumeDown:
-  lea si,sVolumeDown
-  mov bl,kHAL_CMD_DOWN
-
-  jmp @@executeCommand
-
-@@doVolumeUp:
-  lea si,sVolumeUp
-  mov bl,kHAL_CMD_UP
 
   jmp @@executeCommand
 

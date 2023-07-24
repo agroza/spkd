@@ -8,9 +8,9 @@
 
 ; general program equates
 ; ---------------------------------------------------------------------------
-  kCommandDelay          EQU  15
+  kCommandDelay          EQU  24
   kBeepDuration          EQU  100
-  kBeepFrequency         EQU  2280
+  kBeepFrequency         EQU  9121
 
   kDefaultIOAddress      EQU  300h
   kLowestIOAddress       EQU  300h
@@ -18,7 +18,7 @@
 
   kInputPromptWidth      EQU  20
   kInputPromptHeight     EQU  1
-  kInputPromptClearChar  EQU  ' '
+  kInputPromptClearMask  EQU  32
 
 ; commandline parameters configuration bits
 ; ---------------------------------------------------------------------------
@@ -37,6 +37,8 @@
 
 ; commands accelerators
 ; ---------------------------------------------------------------------------
+  kACCEL_CMD_EXIT        EQU  1Bh
+
   kACCEL_CMD_OTP         EQU  'O'
   kACCEL_CMD_OTP_ON      EQU  'A'
   kACCEL_CMD_OTP_OFF     EQU  'B'
